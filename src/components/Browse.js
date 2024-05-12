@@ -1,12 +1,14 @@
-import React from 'react'
-import Header from './Header'
-
+import Header from './Header';
+import useNowPlayingMovies from '../hooks/useNowPlayingMovies';
+import HeroContainer from './HeroContainer';
 const Browse = () => {
+  useNowPlayingMovies();
   return (
     <div>
       <div className='flex justify-between'>
-        <div>
+        <div className='w-full'>
           <Header/>
+          <HeroContainer/>
         </div>
       </div>
     </div>

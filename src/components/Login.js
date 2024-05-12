@@ -3,14 +3,13 @@ import Header from './Header'
 import { validateData } from '../utils/validate';
 import { createUserWithEmailAndPassword,signInWithEmailAndPassword,updateProfile } from "firebase/auth";
 import { auth } from '../utils/firebase';
-import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
+import { BACKGROUND_IMG } from '../utils/constants';
 const Login = () => {
     const name = useRef(null);
     const email = useRef(null);
     const password = useRef(null);
-    const navigate = useNavigate();
     const dispatch = useDispatch();
     const [isSignIn,setIsSignIn] = useState(true);
     const [errorMessage,setErrorMessage] = useState(null);
@@ -49,7 +48,6 @@ const Login = () => {
                 // const errorMessage = error.message;
                 setErrorMessage("Something Went Wrong...try again");
             });
-            navigate("/browse");
         }
         else{
             signInWithEmailAndPassword(auth, emailValue, passwordValue)
@@ -64,7 +62,6 @@ const Login = () => {
                 // const errorMessage = error.message;
                 setErrorMessage("User Doesnt exist...try Signing up");
             });
-            navigate("/browse");
         }
     }
     const toggleSignIn = () => {
@@ -75,7 +72,7 @@ const Login = () => {
         <div>
             <Header/>
             <div className='absolute'>
-                <img src="https://assets.nflxext.com/ffe/siteui/vlv3/ff5587c5-1052-47cf-974b-a97e3b4f0656/065df910-dec3-46ae-afa8-7ad2b52dce40/IN-en-20240506-popsignuptwoweeks-perspective_alpha_website_large.jpg"
+                <img src={BACKGROUND_IMG}
                 alt="background-img"></img>
             </div>
 
