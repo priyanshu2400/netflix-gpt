@@ -6,6 +6,12 @@ export const USER_LOGO = "https://wallpapers.com/images/high/netflix-profile-pic
 
 export const MOVIE_URL = 'https://api.themoviedb.org/3/movie/now_playing';
 
+export const POPULAR_MOVIE_URL = 'https://api.themoviedb.org/3/movie/popular';
+
+export const TRENDING_MOVIE_URL = "https://api.themoviedb.org/3/movie/top_rated";
+
+export const UPCOMING_MOVIE_URL = "https://api.themoviedb.org/3/movie/upcoming";
+
 export const options = {
   method: 'GET',
   headers: {
