@@ -9,11 +9,9 @@ export const validateData = (name,email,password,isSignIn) => {
         if(!isNameValid) return "Full Name is not Valid";
     }
     if(!isEmailValid){
-        console.log("Email is not Valid")
         return "Email is not Valid";
     }
     if(!isPasswordValid){
-        console.log("password is not Valid")
         return "Password is not Valid";
     }
     return null;

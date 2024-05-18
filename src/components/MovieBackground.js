@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux';
 const MovieBackground = ({movieId}) => {
   const trailerVideo = useSelector((store) => store.movies?.trailerVideo);
   useMovieTrailer(movieId);
-  console.log(1);
   return (
     <div className='w-full aspect-video absolute'>
       <iframe className='w-full aspect-video'
