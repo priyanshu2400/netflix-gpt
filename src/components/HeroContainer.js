@@ -9,7 +9,7 @@ const HeroContainer = () => {
     if(movies === null) return;
     const {original_title,overview,id} = movies[0];
   return (
-    <div className='z-40 w-full pt-[25%] md:pt-0'>
+    <div className='z-40 w-full pt-[35%] md:pt-0'>
         <MovieBackground movieId = {id}/>
         <MovieTitle title={original_title} overview={overview}/>
     </div>
