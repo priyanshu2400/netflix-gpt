@@ -51,7 +51,7 @@ const Header = () => {
     dispatch(changeLanguage(e.target.value));
   }
   return (
-    <div className=" flex justify-between absolute w-full bg-gradient-to-b from-black z-20">
+    <div className="flex flex-col justify-between fixed w-full bg-gradient-to-b from-black z-20 items-center md:flex-row ">
       <img className="w-44" src={LOGO_URL}
       alt="logo"></img>
       {user && <div className='p-4 z-30 flex'>
@@ -60,7 +60,7 @@ const Header = () => {
           </select>}
 
           <button className='mx-4 p-2 bg-cyan-800 text-white font-bold rounded-sm hover:bg-cyan-600'
-          onClick={handleToggleGptSearch}>{viewGptSearch ? "Homepage" : "GPT Search"}</button>
+          onClick={handleToggleGptSearch}>{viewGptSearch ? "Homepage" : "Search"}</button>
 
           <img className="w-10 h-10 rounded-sm"alt="userlogo" src={USER_LOGO}></img>
 

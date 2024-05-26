@@ -21,10 +21,10 @@ const Browse = () => {
           {
             viewGptSearch ? <GptSearch/>
             :
-            <>
+            <div className='bg-black md:bg-transparent'>
               <HeroContainer/>
               <SecondaryContainer/>
-            </>
+            </div>
           }
         </div>
       </div>
