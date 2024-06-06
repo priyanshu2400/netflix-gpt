@@ -28,10 +28,6 @@ export const validateData = (name,email,password,isSignIn) => {
             return "The password must contain at least one number.";
         }
 
-        if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
-            return "The password must contain at least one symbol (e.g., !, @, #, $).";
-        }
-
         return "";
    
     }
