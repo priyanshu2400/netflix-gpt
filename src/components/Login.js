@@ -50,6 +50,7 @@ const Login = () => {
             });
         }
         else{
+            //Signup Logic
             signInWithEmailAndPassword(auth, emailValue, passwordValue)
             .then((userCredential) => {
                 // Signed in 
