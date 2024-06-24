@@ -5,7 +5,6 @@ import {options} from "../utils/constants";
 import { useDispatch } from 'react-redux';
 import { addGptMoviesResult } from '../utils/gptSlice';
 import { GoogleGenerativeAI } from '@google/generative-ai';
-import { GEMINI_KEY } from '../utils/constants';
 const GptSearchBar = () => {
   const dispatch = useDispatch();
   const preferredLanguage = useSelector((store) => store.config.language);
@@ -18,17 +17,15 @@ const GptSearchBar = () => {
   }
 
   const handleGptSearchButtonClick = async () => {
-    const apiKey = String(GEMINI_KEY);
-    const genAI = new GoogleGenerativeAI(apiKey);
+    const genAI = new GoogleGenerativeAI(process.env.REACT_APP_GEMENI_KEY);
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash"});
     const prompt =
     "Act as a Movie Recommendation system and suggest some movies for the query : " +
-    searchText.current.value +
+    (searchText.current.value === "" ? "Indian" : searchText.current.value) +
     ". only give me names of 5 movies, comma seperated like the example result given ahead. Example Result: Gadar, Sholay, Don, Golmaal, Koi Mil Gaya";
     const result = await model.generateContent(prompt);
-    const response = await result.response;
+    const response = result.response;
     const GptResult = response.text();
-    console.log(typeof(text));
     const movieResult = GptResult.split(",");
     const promiseArray = movieResult.map((movie) => searchMoviesTMDB(movie));
     const TMDBResults = await Promise.all(promiseArray);

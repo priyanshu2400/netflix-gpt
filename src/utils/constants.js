@@ -19,6 +19,3 @@ export const options = {
     Authorization: 'Bearer '+process.env.REACT_APP_TMDB_KEY
   }
 };
-
-
-export const GEMINI_KEY = process.env.API_KEY;
