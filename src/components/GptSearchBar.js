@@ -4,6 +4,8 @@ import { useSelector } from 'react-redux';
 import {options} from "../utils/constants";
 import { useDispatch } from 'react-redux';
 import { addGptMoviesResult } from '../utils/gptSlice';
+import { GoogleGenerativeAI } from '@google/generative-ai';
+// Access your API key as an environment variable (see "Set up your API key" above)
 const GptSearchBar = () => {
   const dispatch = useDispatch();
   const preferredLanguage = useSelector((store) => store.config.language);
@@ -16,8 +18,17 @@ const GptSearchBar = () => {
   }
 
   const handleGptSearchButtonClick = async () => {
-    // const GptResult = await fetch("");
-    const GptResult = "1920, Raaz, Ek Thi Daayan, Shaapit, Alone";
+    const GEMINI_KEY = "AIzaSyDglAXjJWGXJ3ggOSMv25jXfZP5VqdUK-U";
+    const genAI = new GoogleGenerativeAI(GEMINI_KEY);
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash"});
+    const prompt =
+    "Act as a Movie Recommendation system and suggest some movies for the query : " +
+    searchText.current.value +
+    ". only give me names of 5 movies, comma seperated like the example result given ahead. Example Result: Gadar, Sholay, Don, Golmaal, Koi Mil Gaya";
+    const result = await model.generateContent(prompt);
+    const response = await result.response;
+    const GptResult = response.text();
+    console.log(typeof(text));
     const movieResult = GptResult.split(",");
     const promiseArray = movieResult.map((movie) => searchMoviesTMDB(movie));
     const TMDBResults = await Promise.all(promiseArray);
