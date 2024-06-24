@@ -5,7 +5,7 @@ import {options} from "../utils/constants";
 import { useDispatch } from 'react-redux';
 import { addGptMoviesResult } from '../utils/gptSlice';
 import { GoogleGenerativeAI } from '@google/generative-ai';
-// Access your API key as an environment variable (see "Set up your API key" above)
+import { GEMINI_KEY } from '../utils/constants';
 const GptSearchBar = () => {
   const dispatch = useDispatch();
   const preferredLanguage = useSelector((store) => store.config.language);
@@ -18,8 +18,8 @@ const GptSearchBar = () => {
   }
 
   const handleGptSearchButtonClick = async () => {
-    const GEMINI_KEY = "AIzaSyDglAXjJWGXJ3ggOSMv25jXfZP5VqdUK-U";
-    const genAI = new GoogleGenerativeAI(GEMINI_KEY);
+    const apiKey = String(GEMINI_KEY);
+    const genAI = new GoogleGenerativeAI(apiKey);
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash"});
     const prompt =
     "Act as a Movie Recommendation system and suggest some movies for the query : " +
